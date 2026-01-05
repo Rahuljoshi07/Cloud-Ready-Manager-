@@ -1,0 +1,26 @@
+{
+  "name": "azure-cicd-app",
+  "runtime": "NODE|18-lts",
+  "sku": "B1",
+  "location": "eastus",
+  "settings": {
+    "NODE_ENV": "production",
+    "WEBSITE_NODE_DEFAULT_VERSION": "~18",
+    "SCM_DO_BUILD_DURING_DEPLOYMENT": "true"
+  },
+  "appSettings": [
+    {
+      "name": "WEBSITE_RUN_FROM_PACKAGE",
+      "value": "1"
+    },
+    {
+      "name": "WEBSITES_ENABLE_APP_SERVICE_STORAGE",
+      "value": "false"
+    }
+  ],
+  "linuxFxVersion": "NODE|18-lts",
+  "alwaysOn": true,
+  "http20Enabled": true,
+  "minTlsVersion": "1.2",
+  "ftpsState": "Disabled"
+}

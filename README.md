@@ -1,204 +1,214 @@
-# Linux-Based Cloud System Administration Project
+# Azure CI/CD Pipeline Project
 
-## Overview
-This project demonstrates practical hands-on experience with Linux-based cloud system administration, covering essential tasks required for junior Cloud/System Administrator roles.
+![Azure](https://img.shields.io/badge/Azure-0078D4?style=for-the-badge&logo=microsoft-azure&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 
-## Project Objectives
-- Provision and manage Linux-based cloud compute resources
-- Configure system services and applications
-- Implement monitoring and performance management
-- Establish security through user management and access control
-- Create backup and recovery procedures
-- Document all processes for repeatability
+## 📋 Project Overview
 
-## Technologies Used
-- **Cloud Platform**: AWS/GCP
-- **Operating System**: Linux (Ubuntu/CentOS)
-- **Monitoring Tools**: top, htop, vmstat, CloudWatch/Cloud Monitoring
-- **Access Control**: IAM, Linux user management
-- **Backup Solutions**: Snapshots, configuration backups
+A production-ready web application demonstrating modern DevOps practices with automated CI/CD pipeline deployment to Microsoft Azure. This project showcases continuous integration, automated testing, and continuous deployment using GitHub Actions and Azure App Service.
 
-## Project Structure
+## 🚀 Key Features
+
+- **Automated CI/CD Pipeline**: GitHub Actions workflow for continuous integration and deployment
+- **Azure App Service Integration**: Seamless deployment to Azure cloud platform
+- **Automated Testing**: Unit and integration tests with code coverage
+- **Health Monitoring**: Built-in health check endpoints
+- **Environment Management**: Separate staging and production environments
+- **Docker Support**: Containerized application for consistent deployments
+- **Infrastructure as Code**: Azure configuration for reproducible deployments
+
+## 🛠️ Technology Stack
+
+- **Backend**: Node.js, Express.js
+- **Testing**: Jest, Supertest
+- **CI/CD**: GitHub Actions
+- **Cloud Platform**: Microsoft Azure App Service
+- **Containerization**: Docker
+- **Version Control**: Git, GitHub
+
+## 📁 Project Structure
+
 ```
 .
-├── README.md                           # Project overview and introduction
-├── GETTING_STARTED.md                  # Step-by-step setup guide
-├── PROJECT_CHECKLIST.md                # Complete project checklist
-├── CHANGELOG.md                        # Project version history
-├── LICENSE                             # MIT License
-├── docs/
-│   ├── system-setup.md                # System provisioning and setup
-│   ├── monitoring.md                  # Performance monitoring setup
-│   ├── security.md                    # Access control and security
-│   ├── backup-recovery.md             # Backup and recovery procedures
-│   └── troubleshooting.md             # Common issues and solutions
-├── scripts/
-│   ├── setup.sh                       # System setup automation
-│   ├── monitor.sh                     # Monitoring script with alerts
-│   ├── backup.sh                      # Automated backup with retention
-│   ├── health-check.sh                # System health verification
-│   └── system-info.sh                 # Comprehensive system information
-└── configs/
-    ├── services/
-    │   ├── nginx-sample.conf          # Nginx web server configuration
-    │   └── mysql-sample.cnf           # MySQL database configuration
-    ├── users/
-    │   └── user-setup.sh              # User creation script
-    ├── cron/
-    │   └── crontab-examples.txt       # Cron job examples
-    └── cloud/
-        └── aws-iam-policy-examples.json  # AWS IAM policy templates
+├── .github/
+│   └── workflows/
+│       └── azure-deploy.yml      # CI/CD pipeline configuration
+├── src/
+│   ├── app.js                    # Express application
+│   ├── routes/
+│   │   └── api.js                # API routes
+│   └── controllers/
+│       └── healthController.js   # Health check logic
+├── tests/
+│   ├── unit/                     # Unit tests
+│   └── integration/              # Integration tests
+├── azure/
+│   └── app-service-config.json   # Azure deployment config
+├── Dockerfile                    # Container configuration
+├── .dockerignore                 # Docker ignore file
+├── package.json                  # Dependencies and scripts
+├── .gitignore                    # Git ignore file
+└── README.md                     # Project documentation
 ```
 
-## Quick Start
+## 🔄 CI/CD Pipeline Workflow
 
-### For Beginners
-1. Read [GETTING_STARTED.md](GETTING_STARTED.md) for detailed step-by-step instructions
-2. Use [PROJECT_CHECKLIST.md](PROJECT_CHECKLIST.md) to track your progress
-3. Follow the setup guide in [docs/system-setup.md](docs/system-setup.md)
+1. **Code Push**: Developer pushes code to GitHub
+2. **Automated Build**: GitHub Actions triggers build process
+3. **Testing**: Runs unit and integration tests
+4. **Code Quality**: Checks code coverage and linting
+5. **Docker Build**: Creates container image
+6. **Azure Deployment**: Deploys to Azure App Service
+7. **Health Check**: Verifies deployment success
 
-### For Experienced Users
+## 🎯 Pipeline Features
 
-### Core System Administration
-- ✅ Cloud resource provisioning (AWS EC2, GCP Compute Engine)
-- ✅ Linux system installation and configuration
-- ✅ Package management and system updates
-- ✅ Service management with systemd
-- ✅ Shell scripting and automation
+- ✅ Automated testing on every commit
+- ✅ Parallel job execution for faster builds
+- ✅ Environment-specific deployments
+- ✅ Automatic rollback on failure
+- ✅ Slack/Email notifications
+- ✅ Security scanning
+- ✅ Performance monitoring
 
-### Security & Access Control
-- ✅ User and group management
-- ✅ SSH key-based authentication
-- ✅ Firewall configuration (UFW/iptables)
-- ✅ IAM policies and cloud security
-- ✅ Security hardening best practices
+## 📊 Getting Started
 
-### Monitoring & Performance
-- ✅ System performance monitoring (CPU, memory, disk)
-- ✅ Log analysis and management
-- ✅ Automated health checks
-- ✅ Alert configuration
-- ✅ Resource optimization
+### Prerequisites
 
-### Backup & Recovery
-- ✅ Backup strategy implementation
-- ✅ Automated backup scripts
-- ✅ Database backups (MySQL/PostgreSQL)
-- ✅ Cloud snapshots
-- ✅ Disaster recovery procedures
+- Node.js 18.x or higher
+- Azure Account
+- GitHub Account
+- Docker (optional)
 
-### Documentation & Best Practices
-- ✅ Technical documentation
-- ✅ Runbook creation
-- ✅ Troubleshooting guides
-- ✅ Configuration management
-- ✅ Change tracking
-## Skills Demonstrated
-- Cloud resource provisioning and management
-- Linux system administration
-- System monitoring and performance analysis
-- Security and access control implementation
-- Backup and disaster recovery
-- Technical documentation
+### Local Development
 
-## Documentation
-
-### Getting Started
-- 📘 [Getting Started Guide](GETTING_STARTED.md) - Complete setup walkthrough
-- ✅ [Project Checklist](PROJECT_CHECKLIST.md) - Track your progress
-- 📋 [Changelog](CHANGELOG.md) - Version history
-
-### Technical Guides
-- 🖥️ [System Setup](docs/system-setup.md) - Instance provisioning and configuration
-- 📊 [Monitoring](docs/monitoring.md) - Performance monitoring and alerting
-- 🔒 [Security](docs/security.md) - Access control and hardening
-- 💾 [Backup & Recovery](docs/backup-recovery.md) - Data protection strategies
-- 🔧 [Troubleshooting](docs/troubleshooting.md) - Common issues and solutions
-
-### Scripts & Automation
-- `setup.sh` - Automated system initialization
-- `monitor.sh` - Real-time system monitoring
-- `backup.sh` - Automated backup with retention
-- `health-check.sh` - Quick system health verification
-- `system-info.sh` - Comprehensive system information
-
-## Usage Examples
-
-### Run System Setup
 ```bash
-sudo chmod +x scripts/setup.sh
-sudo ./scripts/setup.sh
+# Clone the repository
+git clone <repository-url>
+cd <project-directory>
+
+# Install dependencies
+npm install
+
+# Run tests
+npm test
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
 ```
 
-### Check System Health
+### Azure Setup
+
+1. **Create Azure App Service**:
+   ```bash
+   az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name myUniqueAppName --runtime "NODE|18-lts"
+   ```
+
+2. **Configure GitHub Secrets**:
+   - `AZURE_WEBAPP_PUBLISH_PROFILE`: Download from Azure Portal
+   - `AZURE_WEBAPP_NAME`: Your app service name
+
+3. **Enable Deployment**:
+   - Push to `main` branch triggers automatic deployment
+
+## 🔐 Environment Variables
+
+```env
+NODE_ENV=production
+PORT=8080
+AZURE_REGION=eastus
+LOG_LEVEL=info
+```
+
+## 🧪 Testing
+
 ```bash
-chmod +x scripts/health-check.sh
-./scripts/health-check.sh
+# Run all tests
+npm test
+
+# Run with coverage
+npm run test:coverage
+
+# Run integration tests
+npm run test:integration
 ```
 
-### View System Information
+## 📈 Monitoring & Logging
+
+- **Application Insights**: Real-time performance monitoring
+- **Azure Monitor**: Infrastructure metrics
+- **Log Analytics**: Centralized logging
+- **Health Endpoints**: `/health` and `/ready`
+
+## 🌟 Best Practices Demonstrated
+
+- ✅ **12-Factor App Methodology**: Environment-based configuration
+- ✅ **Blue-Green Deployment**: Zero-downtime deployments
+- ✅ **Infrastructure as Code**: Reproducible infrastructure
+- ✅ **Security First**: Secrets management, dependency scanning
+- ✅ **Observability**: Logging, monitoring, and alerting
+- ✅ **Documentation**: Comprehensive README and inline comments
+
+## 🚀 Deployment
+
+### Automatic Deployment
+Push to `main` branch triggers automatic deployment:
 ```bash
-chmod +x scripts/system-info.sh
-./scripts/system-info.sh
+git add .
+git commit -m "feat: add new feature"
+git push origin main
 ```
 
-### Monitor System (with logging)
+### Manual Deployment
 ```bash
-chmod +x scripts/monitor.sh
-./scripts/monitor.sh --log
+# Deploy to Azure manually
+npm run deploy
 ```
 
-### Perform Backup
-```bash
-sudo chmod +x scripts/backup.sh
-sudo ./scripts/backup.sh --full
-```
+## 📝 API Endpoints
 
-## Learning Outcomes
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/` | GET | Welcome message |
+| `/api/health` | GET | Health check |
+| `/api/info` | GET | Application info |
+| `/api/status` | GET | System status |
 
-After completing this project, you will be able to:
-- ✅ Provision and configure cloud infrastructure
-- ✅ Secure Linux systems using best practices
-- ✅ Implement monitoring and alerting solutions
-- ✅ Design and execute backup strategies
-- ✅ Troubleshoot common system issues
-- ✅ Document technical procedures effectively
-- ✅ Automate routine administrative tasks
-- ✅ Manage users and permissions in cloud environments
+## 🤝 Contributing
 
-## Real-World Applications
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
+5. Open Pull Request
 
-This project prepares you for:
-- **Junior Cloud Administrator** positions
-- **Junior System Administrator** roles
-- **DevOps Engineer** entry-level positions
-- **Site Reliability Engineer** (SRE) roles
-- **Cloud Support** positions
+## 📄 License
 
-## Contributing
+This project is licensed under the MIT License.
 
-This is a learning project, but suggestions and improvements are welcome! Feel free to:
-- Report issues or bugs
-- Suggest improvements
-- Add new features or scripts
-- Improve documentation
+## 👤 Author
 
-## Author
-**Your Name**  
-Aspiring Cloud/System Administrator  
-[LinkedIn](your-linkedin) | [GitHub](your-github) | [Email](your-email)
+**Your Name**
+- GitHub: [@yourusername](https://github.com/yourusername)
+- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
 
-## Acknowledgments
-- Linux community and documentation
-- AWS and GCP documentation
-- Open source tools and projects
-- System administration best practices guides
+## 🎓 Skills Demonstrated
 
-## Date
-Created: January 2026  
-Last Updated: January 2026
-
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+- DevOps & CI/CD Pipeline Design
+- Cloud Computing (Microsoft Azure)
+- Infrastructure as Code
+- Automated Testing & QA
+- Container Orchestration
+- GitHub Actions Automation
+- RESTful API Development
+- Monitoring & Observability
+- Security Best Practices
+- Agile Development Practices
 
 ---
+
+**⭐ If you found this project helpful, please give it a star!**
