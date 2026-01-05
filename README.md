@@ -1,8 +1,15 @@
-# Azure CI/CD Pipeline Project
+# AzureFlow - CI/CD Pipeline Project
+
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=github-actions&logoColor=white)
+![Azure](https://img.shields.io/badge/Azure-0078D4?style=flat-square&logo=microsoft-azure&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+
+> **AzureFlow** - A production-ready DevOps portfolio project demonstrating automated CI/CD pipeline deployment to Microsoft Azure.
 
 ## 📋 Project Overview
 
-A production-ready web application demonstrating modern DevOps practices with automated CI/CD pipeline deployment to Microsoft Azure. This project showcases continuous integration, automated testing, and continuous deployment using GitHub Actions and Azure App Service.
+AzureFlow is a modern web application showcasing professional DevOps practices with continuous integration, automated testing, and continuous deployment using GitHub Actions and Azure App Service.
 
 ## 🚀 Key Features
 

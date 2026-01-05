@@ -29,7 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 // Root endpoint
 app.get('/', (req, res) => {
   res.json({
-    message: '🚀 Welcome to Azure CI/CD Pipeline Demo',
+    message: '🚀 Welcome to AzureFlow - CI/CD Pipeline Demo',
     version: '1.0.0',
     status: 'active',
     timestamp: new Date().toISOString(),

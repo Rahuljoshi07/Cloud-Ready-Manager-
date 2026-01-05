@@ -11,7 +11,7 @@ router.get('/ready', healthController.readinessCheck);
 // Application info
 router.get('/info', (req, res) => {
   res.json({
-    application: 'Azure CI/CD Pipeline Demo',
+    application: 'AzureFlow - CI/CD Pipeline Demo',
     version: '1.0.0',
     description: 'Automated deployment to Azure App Service',
     author: 'Your Name',
