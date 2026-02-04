@@ -1,229 +1,357 @@
-# Setup Guide - Azure CI/CD Pipeline Project
+# 🚀 Full Stack Application Setup Guide
 
-This guide will help you set up and deploy this project to Azure.
+Complete setup instructions for the Backend API + Frontend React App.
 
 ## 📋 Prerequisites
 
-Before you begin, ensure you have:
+Before you begin, ensure you have the following installed:
 
-- ✅ GitHub account
-- ✅ Microsoft Azure account (free tier works)
-- ✅ Node.js 18.x or higher installed locally
-- ✅ Git installed
-- ✅ Azure CLI (optional, for advanced setup)
+- **Node.js 18+** and npm
+- **Docker Desktop** (for containerized setup)
+- **PostgreSQL 15+** (if running locally without Docker)
+- **Git** (optional, for version control)
 
-## 🚀 Quick Start
+## 🎯 Quick Start (Recommended - Using Docker)
 
-### Step 1: Fork/Clone the Repository
+### Step 1: Start Backend with Docker
 
-```bash
-git clone <your-repository-url>
-cd <project-directory>
+```powershell
+# Navigate to backend directory
+cd "c:\Users\Lenovo\OneDrive\Desktop\Collage wla\backend-api"
+
+# Start PostgreSQL + API services
+docker-compose up -d
+
+# Verify services are running
+docker-compose ps
+
+# Check logs (optional)
+docker-compose logs -f api
 ```
 
-### Step 2: Install Dependencies
+**Backend will be available at:** `http://localhost:3000`
 
-```bash
+### Step 2: Install Frontend Dependencies
+
+```powershell
+# Open a new terminal and navigate to frontend
+cd "c:\Users\Lenovo\OneDrive\Desktop\Collage wla\frontend-app"
+
+# Install dependencies
 npm install
 ```
 
-### Step 3: Test Locally
+### Step 3: Start Frontend Development Server
 
-```bash
-# Run tests
-npm test
-
-# Start development server
+```powershell
+# Still in frontend-app directory
 npm run dev
-
-# Visit http://localhost:8080
 ```
 
-## ☁️ Azure Setup
+**Frontend will be available at:** `http://localhost:3001` (or `http://localhost:3000` if port 3000 is free)
 
-### Step 1: Create Azure App Service
+### Step 4: Access the Application
 
-#### Option A: Using Azure Portal (Recommended for Beginners)
-
-1. Go to [Azure Portal](https://portal.azure.com)
-2. Click **"Create a resource"**
-3. Search for **"Web App"**
-4. Fill in the details:
-   - **Subscription**: Your subscription
-   - **Resource Group**: Create new (e.g., "cicd-demo-rg")
-   - **Name**: Choose unique name (e.g., "myapp-cicd-demo")
-   - **Publish**: Code
-   - **Runtime stack**: Node 18 LTS
-   - **Region**: East US (or nearest)
-   - **Pricing plan**: F1 (Free) or B1 (Basic)
-5. Click **"Review + Create"** → **"Create"**
-
-#### Option B: Using Azure CLI
-
-```bash
-# Login to Azure
-az login
-
-# Create resource group
-az group create --name cicd-demo-rg --location eastus
-
-# Create App Service plan
-az appservice plan create \
-  --name cicd-demo-plan \
-  --resource-group cicd-demo-rg \
-  --sku B1 \
-  --is-linux
-
-# Create Web App
-az webapp create \
-  --name myapp-cicd-demo \
-  --resource-group cicd-demo-rg \
-  --plan cicd-demo-plan \
-  --runtime "NODE:18-lts"
-```
-
-### Step 2: Get Publish Profile
-
-1. In Azure Portal, go to your Web App
-2. Click **"Get publish profile"** (top menu)
-3. Download the `.publishsettings` file
-4. Open it and copy the entire XML content
-
-### Step 3: Configure GitHub Secrets
-
-1. Go to your GitHub repository
-2. Click **Settings** → **Secrets and variables** → **Actions**
-3. Click **"New repository secret"**
-4. Add these secrets:
-
-   **Secret 1:**
-   - Name: `AZURE_WEBAPP_PUBLISH_PROFILE`
-   - Value: Paste the publish profile XML content
-
-   **Secret 2:**
-   - Name: `AZURE_WEBAPP_NAME`
-   - Value: Your app name (e.g., "myapp-cicd-demo")
-
-### Step 4: Update Workflow File
-
-Edit `.github/workflows/azure-deploy.yml`:
-
-```yaml
-env:
-  AZURE_WEBAPP_NAME: 'your-app-name'  # ← Change this to your app name
-```
-
-## 🔄 Deploy
-
-### Automatic Deployment
-
-Simply push to the `main` branch:
-
-```bash
-git add .
-git commit -m "Initial commit"
-git push origin main
-```
-
-The GitHub Action will automatically:
-1. ✅ Run tests
-2. ✅ Build the application
-3. ✅ Deploy to Azure
-4. ✅ Verify deployment
-
-### View Deployment Status
-
-1. Go to your GitHub repository
-2. Click **"Actions"** tab
-3. See the running workflow
-4. Click on it to see detailed logs
-
-## 🌐 Access Your Application
-
-Once deployed, visit:
-- `https://your-app-name.azurewebsites.net/`
-- `https://your-app-name.azurewebsites.net/api/health`
-- `https://your-app-name.azurewebsites.net/api/info`
-
-## 🧪 Test Endpoints
-
-```bash
-# Replace with your actual URL
-curl https://your-app-name.azurewebsites.net/api/health
-curl https://your-app-name.azurewebsites.net/api/info
-curl https://your-app-name.azurewebsites.net/api/status
-```
-
-## 📊 Monitor Your Application
-
-### Azure Portal
-
-1. Go to your Web App in Azure Portal
-2. Check **"Metrics"** for performance
-3. View **"Log stream"** for real-time logs
-4. Use **"Application Insights"** for advanced monitoring
-
-## 🔧 Troubleshooting
-
-### Deployment Fails
-
-1. Check GitHub Actions logs
-2. Verify secrets are correctly set
-3. Ensure app name matches in workflow file
-4. Check Azure App Service logs in portal
-
-### Application Not Starting
-
-1. Check Node.js version matches (18.x)
-2. Verify all dependencies are in `package.json`
-3. Check environment variables
-4. Review logs in Azure Portal
-
-### Tests Failing
-
-```bash
-# Run tests locally
-npm test
-
-# Check specific test
-npm test -- health.test.js
-```
-
-## 🎯 For Resume/Portfolio
-
-### What to Highlight:
-
-1. **CI/CD Pipeline**: Automated testing and deployment
-2. **Cloud Deployment**: Azure App Service integration
-3. **DevOps Practices**: GitHub Actions, automated testing
-4. **Monitoring**: Health checks, logging, metrics
-5. **Containerization**: Docker support
-6. **Best Practices**: Security, error handling, documentation
-
-### Talking Points for Interviews:
-
-- "Implemented automated CI/CD pipeline using GitHub Actions"
-- "Deployed Node.js application to Azure App Service"
-- "Configured automated testing with 90%+ code coverage"
-- "Set up health monitoring and logging"
-- "Implemented Docker containerization for consistent deployments"
-- "Followed 12-factor app methodology"
-
-## 📚 Next Steps
-
-1. ✅ Enable Application Insights for monitoring
-2. ✅ Set up staging environment
-3. ✅ Add database integration
-4. ✅ Implement caching with Redis
-5. ✅ Add API authentication
-6. ✅ Set up custom domain
-
-## 🆘 Need Help?
-
-- Check [Azure Documentation](https://docs.microsoft.com/azure)
-- Visit [GitHub Actions Documentation](https://docs.github.com/actions)
-- Review [Node.js Best Practices](https://github.com/goldbergyoni/nodebestpractices)
+Open your browser and go to:
+- **Frontend:** `http://localhost:3001`
+- **Backend API:** `http://localhost:3000`
+- **API Documentation:** `http://localhost:3000/`
+- **Health Check:** `http://localhost:3000/health`
 
 ---
 
-**Remember**: Replace all placeholder values with your actual Azure resource names!
+## 🔧 Alternative Setup (Without Docker)
+
+If you prefer to run services locally without Docker:
+
+### Backend Setup
+
+```powershell
+# 1. Navigate to backend
+cd "c:\Users\Lenovo\OneDrive\Desktop\Collage wla\backend-api"
+
+# 2. Install dependencies
+npm install
+
+# 3. Set up PostgreSQL database
+# - Install PostgreSQL from https://www.postgresql.org/download/
+# - Create database:
+psql -U postgres
+CREATE DATABASE api_db;
+\q
+
+# 4. Initialize database schema
+psql -U postgres -d api_db -f src/config/init-db.sql
+
+# 5. Configure environment (optional)
+# Copy .env.example to .env and adjust if needed
+copy .env.example .env
+
+# 6. Start the server
+npm run dev
+```
+
+### Frontend Setup
+
+```powershell
+# 1. Navigate to frontend
+cd "c:\Users\Lenovo\OneDrive\Desktop\Collage wla\frontend-app"
+
+# 2. Install dependencies
+npm install
+
+# 3. Start development server
+npm run dev
+```
+
+---
+
+## 🧪 Testing the Application
+
+### 1. Using Postman
+
+```powershell
+# Import the Postman collection
+# File: backend-api/postman_collection.json
+```
+
+1. Open Postman
+2. Click **Import**
+3. Select `postman_collection.json` from backend-api folder
+4. Test all endpoints
+
+### 2. Using the Frontend UI
+
+1. Navigate to `http://localhost:3001`
+2. Click **View Users** or **View Products**
+3. Try creating, viewing, and deleting items
+4. Use the search functionality
+
+### 3. Using curl
+
+```powershell
+# Get all users
+curl http://localhost:3000/api/users
+
+# Create a new user
+curl -X POST http://localhost:3000/api/users -H "Content-Type: application/json" -d "{\"name\":\"Test User\",\"email\":\"test@example.com\",\"age\":25}"
+
+# Get all products
+curl http://localhost:3000/api/products
+```
+
+---
+
+## 📦 Project Structure
+
+```
+Collage wla/
+├── backend-api/              # Node.js + Express + PostgreSQL
+│   ├── src/
+│   │   ├── config/          # Database configuration
+│   │   ├── controllers/     # Business logic
+│   │   ├── routes/          # API routes
+│   │   ├── middleware/      # Validation & rate limiting
+│   │   └── server.js        # Main application
+│   ├── Dockerfile
+│   ├── docker-compose.yml
+│   └── package.json
+│
+└── frontend-app/             # React + Next.js + TypeScript
+    ├── app/                 # Next.js pages
+    ├── components/          # React components
+    ├── store/               # Zustand state management
+    ├── lib/                 # API client
+    └── package.json
+```
+
+---
+
+## 🔍 Troubleshooting
+
+### Backend Issues
+
+**Port 3000 already in use:**
+```powershell
+# Change PORT in .env file
+PORT=3001
+```
+
+**Database connection failed:**
+```powershell
+# Check if PostgreSQL is running
+docker-compose ps
+
+# Restart services
+docker-compose down
+docker-compose up -d
+```
+
+**Can't connect to database:**
+```powershell
+# Check database logs
+docker-compose logs postgres
+
+# Access PostgreSQL directly
+docker exec -it api_postgres psql -U postgres -d api_db
+```
+
+### Frontend Issues
+
+**Port conflict:**
+- Next.js will automatically use the next available port
+- Check terminal output for the actual port
+
+**API connection failed:**
+- Ensure backend is running on `http://localhost:3000`
+- Check `.env.local` file in frontend-app
+- Verify `NEXT_PUBLIC_API_URL=http://localhost:3000/api`
+
+**Module not found errors:**
+```powershell
+# Delete node_modules and reinstall
+rm -rf node_modules
+npm install
+```
+
+---
+
+## 🛠️ Development Commands
+
+### Backend
+
+```powershell
+npm run dev      # Start with auto-reload (nodemon)
+npm start        # Start production server
+docker-compose up -d        # Start with Docker
+docker-compose down         # Stop Docker services
+docker-compose logs -f api  # View logs
+```
+
+### Frontend
+
+```powershell
+npm run dev      # Start development server
+npm run build    # Build for production
+npm start        # Start production server
+npm run lint     # Run ESLint
+```
+
+---
+
+## 🎨 Features Overview
+
+### Backend Features
+✅ RESTful API with Express.js
+✅ PostgreSQL database with connection pooling
+✅ Input validation with express-validator
+✅ Rate limiting (100 requests/15 min)
+✅ Security headers with Helmet
+✅ CORS enabled
+✅ Request logging
+✅ Error handling middleware
+✅ Health check endpoint
+✅ Docker containerization
+
+### Frontend Features
+✅ React 18 with TypeScript
+✅ Next.js 14 (App Router)
+✅ Tailwind CSS styling
+✅ Framer Motion animations
+✅ Zustand state management
+✅ Toast notifications
+✅ Search/filter functionality
+✅ Responsive design
+✅ Loading states
+✅ Error handling
+✅ Form validation
+
+---
+
+## 📚 API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /health | Health check |
+| GET | / | API documentation |
+| GET | /api/users | Get all users |
+| GET | /api/users/:id | Get user by ID |
+| POST | /api/users | Create user |
+| PUT | /api/users/:id | Update user |
+| DELETE | /api/users/:id | Delete user |
+| GET | /api/products | Get all products |
+| GET | /api/products/:id | Get product by ID |
+| POST | /api/products | Create product |
+| PUT | /api/products/:id | Update product |
+| DELETE | /api/products/:id | Delete product |
+
+---
+
+## 🔐 Security Features
+
+- Helmet.js for security headers
+- CORS configuration
+- Input validation on all endpoints
+- Rate limiting to prevent abuse
+- SQL injection protection (parameterized queries)
+- Environment variables for sensitive data
+
+---
+
+## 📱 Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+---
+
+## 🚀 Production Deployment
+
+### Backend
+```powershell
+npm run build
+npm start
+# Or use Docker:
+docker build -t backend-api .
+docker run -p 3000:3000 backend-api
+```
+
+### Frontend
+```powershell
+npm run build
+npm start
+# Or deploy to Vercel:
+vercel
+```
+
+---
+
+## 📝 License
+
+ISC
+
+---
+
+## 💡 Tips
+
+1. **Always start backend before frontend**
+2. **Use Docker for easiest setup**
+3. **Check health endpoint if issues occur**
+4. **View browser console for frontend errors**
+5. **Check terminal logs for backend errors**
+6. **Test with Postman collection first**
+
+---
+
+## 🆘 Need Help?
+
+- Check [Backend README](backend-api/README.md)
+- Check [Frontend README](frontend-app/README.md)
+- Review API documentation at `http://localhost:3000/`
+- Test endpoints with Postman collection
+
+---
+
+**Happy Coding! 🎉**
