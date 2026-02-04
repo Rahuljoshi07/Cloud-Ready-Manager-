@@ -173,10 +173,6 @@ npm run lint        # Run ESLint
 ### Health
 - `GET /health` - Health check endpoint
 
-## 📸 Screenshots
-
-*Add your screenshots here*
-
 ## 🧪 Testing
 
 Import the [Postman collection](backend-api/postman_collection.json) to test all API endpoints.
@@ -191,7 +187,7 @@ Import the [Postman collection](backend-api/postman_collection.json) to test all
 
 ## 📝 License
 
-MIT License - feel free to use this project for learning and portfolio purposes.
+Feel free to use this project for learning and portfolio purposes.
 
 ## 👤 Author
 
