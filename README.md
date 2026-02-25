@@ -104,6 +104,98 @@ npm install
 npm start
 ```
 
+## 📦 Available Scripts
+
+### Backend
+```bash
+npm start           # Start production server
+npm run dev         # Start development server with nodemon
+npm run seed        # Populate database with sample data
+npm run docker:up   # Start Docker containers
+npm run docker:down # Stop Docker containers
+npm run docker:logs # View API logs
+npm run db:connect  # Connect to PostgreSQL
+```
+
+### Frontend
+```bash
+npm run dev         # Start development server
+npm run build       # Build for production
+npm start           # Start production server
+npm run lint        # Run ESLint
+```
+
+## 🗂️ Project Structure
+
+```
+├── backend-api/
+│   ├── src/
+│   │   ├── config/          # Database and configuration
+│   │   ├── controllers/     # Request handlers
+│   │   ├── routes/          # API routes
+│   │   ├── middleware/      # Custom middleware
+│   │   └── server.js        # Application entry point
+│   ├── Dockerfile
+│   ├── docker-compose.yml
+│   ├── examples.js          # API usage examples
+│   └── seed.js              # Database seeding
+│
+└── frontend-app/
+    ├── app/                 # Next.js app directory
+    │   ├── users/           # Users page
+    │   ├── products/        # Products page
+    │   └── layout.tsx       # Root layout
+    ├── components/          # React components
+    ├── store/               # Zustand store
+    ├── lib/                 # Utilities and API client
+    ├── hooks/               # Custom React hooks
+    └── tailwind.config.ts   # Tailwind configuration
+```
+
+## 🔌 API Endpoints
+
+### Users
+- `GET /api/users` - Get all users
+- `GET /api/users/:id` - Get user by ID
+- `POST /api/users` - Create new user
+- `PUT /api/users/:id` - Update user
+- `DELETE /api/users/:id` - Delete user
+
+### Products
+- `GET /api/products` - Get all products
+- `GET /api/products/:id` - Get product by ID
+- `POST /api/products` - Create new product
+- `PUT /api/products/:id` - Update product
+- `DELETE /api/products/:id` - Delete product
+
+### Health
+- `GET /health` - Health check endpoint
+
+## 🧪 Testing
+
+Import the [Postman collection](backend-api/postman_collection.json) to test all API endpoints.
+
+## 🔒 Security Features
+
+- Input validation on all endpoints
+- Rate limiting (100 requests/15 minutes)
+- Security headers with Helmet
+- CORS configuration
+- SQL injection prevention with parameterized queries
+
+## 📝 License
+
+Feel free to use this project for learning and portfolio purposes.
+
+## 👤 Author
+
+**Rahul Joshi**
+- GitHub: [@Rahuljoshi07](https://github.com/Rahuljoshi07)
+
+## 🙏 Acknowledgments
+
+Built with modern web technologies and best practices for educational and portfolio purposes.
+
 ---
 
 ## 🔑 Default Credentials
