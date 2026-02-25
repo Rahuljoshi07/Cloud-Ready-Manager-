@@ -64,7 +64,7 @@ const login = async (req, res) => {
       { expiresIn: process.env.JWT_EXPIRES_IN || '7d' }
     );
 
-    const { password_hash, ...safeUser } = user;
+    const { password_hash: _password_hash, ...safeUser } = user; // eslint-disable-line no-unused-vars
     res.json({ user: safeUser, token });
   } catch (error) {
     console.error('Login error:', error);

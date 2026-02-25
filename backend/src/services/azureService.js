@@ -83,7 +83,6 @@ function generateDailyCosts(days = 30) {
  */
 function generateResources() {
   const resources = [];
-  const vmSizes = ['Standard_B2s', 'Standard_D4s_v3', 'Standard_E8s_v3', 'Standard_F8s_v2'];
   const statuses = ['running', 'running', 'running', 'stopped', 'deallocated'];
 
   const resourceDefs = [

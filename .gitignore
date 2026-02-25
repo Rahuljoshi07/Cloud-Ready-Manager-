@@ -60,3 +60,7 @@ coverage/
 .npm
 .eslintcache
 .yarn-integrity
+
+# Temporary agent working directories
+tmpclaude-*
+tmp/

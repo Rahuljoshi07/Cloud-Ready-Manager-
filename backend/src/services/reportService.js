@@ -24,7 +24,6 @@ async function generateCostReport(reportData) {
         costByRegion = [],
         topResources = [],
         recommendations = [],
-        alerts = [],
       } = reportData;
 
       // ── Header ────────────────────────────────────────────────
@@ -48,11 +47,9 @@ async function generateCostReport(reportData) {
         { label: 'MoM Change', value: `${summary.mom_change >= 0 ? '+' : ''}${(summary.mom_change || 0).toFixed(1)}%` },
       ];
 
-      let kpiX = 50;
       let kpiY = doc.y + 10;
       kpis.forEach((kpi, i) => {
         if (i % 3 === 0 && i > 0) {
-          kpiX = 50;
           kpiY += 60;
         }
         const col = i % 3;
