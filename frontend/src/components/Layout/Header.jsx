@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { MdLightMode, MdDarkMode, MdRefresh, MdDownload } from 'react-icons/md';
+import { MdLightMode, MdDarkMode } from 'react-icons/md';
 import { useAuth } from '../../context/AuthContext';
 
 const pageTitles = {

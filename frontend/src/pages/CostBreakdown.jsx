@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
-import { MdSearch, MdFilterList } from 'react-icons/md';
+import { MdSearch } from 'react-icons/md';
 import api from '../services/api';
 import LoadingSpinner from '../components/common/LoadingSpinner';
 

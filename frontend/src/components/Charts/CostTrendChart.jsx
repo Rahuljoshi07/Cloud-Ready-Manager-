@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip,
-  ResponsiveContainer, Area, AreaChart, ReferenceLine,
+  XAxis, YAxis, CartesianGrid, Tooltip,
+  ResponsiveContainer, Area, AreaChart, Line,
 } from 'recharts';
 
 const CustomTooltip = ({ active, payload, label }) => {

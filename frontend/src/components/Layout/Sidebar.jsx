@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import {
   MdDashboard, MdAttachMoney, MdCloud, MdLightbulb,
   MdNotifications, MdAccountBalanceWallet, MdAssessment,
-  MdLogout, MdCloud as AzureIcon,
+  MdLogout,
 } from 'react-icons/md';
 import { useAuth } from '../../context/AuthContext';
 import { useQuery } from 'react-query';
@@ -39,7 +39,7 @@ const Sidebar = () => {
   return (
     <aside className="sidebar">
       <div className="sidebar-logo">
-        <AzureIcon size={28} color="#0078d4" />
+        <MdCloud size={28} color="#0078d4" />
         <div className="sidebar-logo-text">
           Azure Cost Monitor
           <span>Cloud FinOps Platform</span>

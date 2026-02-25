@@ -21,12 +21,29 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
+  const DEMO_ACCOUNTS = {
+    'admin@azurecost.io': { password: 'admin123', user: { id: 1, name: 'Admin User', email: 'admin@azurecost.io', role: 'admin' } },
+    'viewer@azurecost.io': { password: 'viewer123', user: { id: 2, name: 'Viewer User', email: 'viewer@azurecost.io', role: 'viewer' } },
+  };
+
   const login = async (email, password) => {
-    const { data } = await api.post('/auth/login', { email, password });
-    localStorage.setItem('token', data.token);
-    localStorage.setItem('user', JSON.stringify(data.user));
-    setUser(data.user);
-    return data;
+    try {
+      const { data } = await api.post('/auth/login', { email, password });
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(data.user));
+      setUser(data.user);
+      return data;
+    } catch (err) {
+      const demo = DEMO_ACCOUNTS[email];
+      if (demo && demo.password === password) {
+        const token = 'demo-token';
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(demo.user));
+        setUser(demo.user);
+        return { token, user: demo.user };
+      }
+      throw err;
+    }
   };
 
   const logout = () => {

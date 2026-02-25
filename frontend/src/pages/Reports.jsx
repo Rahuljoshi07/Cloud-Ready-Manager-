@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import {
-  MdAssessment, MdDownload, MdPictureAsPdf, MdBarChart, MdTrendingUp,
+  MdDownload, MdPictureAsPdf, MdBarChart,
 } from 'react-icons/md';
 import api from '../services/api';
-import LoadingSpinner from '../components/common/LoadingSpinner';
 import CostTrendChart from '../components/Charts/CostTrendChart';
 import CostByServiceChart from '../components/Charts/CostByServiceChart';
 
