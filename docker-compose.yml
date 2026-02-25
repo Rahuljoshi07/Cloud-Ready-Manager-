@@ -1,0 +1,57 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: azure-cost-monitor-db
+    environment:
+      POSTGRES_DB: azure_cost_monitor
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend/src/db/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: azure-cost-monitor-api
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      JWT_SECRET: azure_cost_monitor_super_secret_key_change_in_production
+      JWT_EXPIRES_IN: 7d
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: azure_cost_monitor
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      CORS_ORIGIN: http://localhost:3000
+    ports:
+      - "5000:5000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: azure-cost-monitor-ui
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
