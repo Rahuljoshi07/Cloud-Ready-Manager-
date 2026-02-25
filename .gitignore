@@ -60,3 +60,6 @@ coverage/
 .npm
 .eslintcache
 .yarn-integrity
+
+# Temporary agent session files
+tmpclaude-*
