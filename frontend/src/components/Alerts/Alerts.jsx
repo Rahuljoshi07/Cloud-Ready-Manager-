@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Bell, CheckCircle, Trash2, Filter, AlertTriangle } from 'lucide-react';
+import { Bell, CheckCircle, Trash2, Filter } from 'lucide-react';
 import { alertsAPI } from '../../services/api';
 import toast from 'react-hot-toast';
 
@@ -51,7 +51,7 @@ const Alerts = () => {
     }
   };
 
-  useEffect(() => { fetchAlerts(); }, [severityFilter, statusFilter]);
+  useEffect(() => { fetchAlerts(); }, [severityFilter, statusFilter]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleUpdate = async (id, status) => {
     try {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { PlusCircle, Trash2, X, DollarSign } from 'lucide-react';
+import { PlusCircle, Trash2, X } from 'lucide-react';
 import { budgetsAPI } from '../../services/api';
 import toast from 'react-hot-toast';
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Lightbulb, DollarSign, CheckCircle, XCircle, Filter } from 'lucide-react';
+import { Lightbulb, CheckCircle, XCircle, Filter } from 'lucide-react';
 import { recommendationsAPI } from '../../services/api';
 import toast from 'react-hot-toast';
 
@@ -33,7 +33,7 @@ const Recommendations = () => {
     }
   };
 
-  useEffect(() => { fetchData(); }, [filter]);
+  useEffect(() => { fetchData(); }, [filter]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleStatusUpdate = async (rec, status) => {
     try {
